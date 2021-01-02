@@ -1,7 +1,6 @@
 baseURL = "https://reposman33.github.io/Udemy-JAMSite/"
 languageCode = "en-us"
 title = "JAMsite"
-theme = "tale"
 copyright =  "(c) 2020 Marc Bakker"
 disableKinds = ["section"]
 [params]
