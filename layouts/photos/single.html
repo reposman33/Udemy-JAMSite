@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+<main>
+		<div class="post">
+			{{ partial "single/post-info.html" . }}
+			{{ partial "single/title.html" . }}
+			<div>
+				{{- if .Params.tags}}
+					{{ partial "photos/tags.html" .Params.tags}}
+				{{- end}}
+				{{ .Content }}
+
+				{{ partial "contact.html" .}}
+			</div>
+
+			{{partial "comment.html" .}}
+			{{ partial "single/footer.html" . }}
+		</div>
+
+	<div class="pagination">
+		{{- if .PrevPage }}
+		<a href="{{ .PrevPage.RelPermalink }}" class="left arrow">&#8592;</a>
+		{{- end }}
+		{{- if .NextPage }}
+		<a href="{{ .NextPage.RelPermalink }}" class="right arrow">&#8594;</a>
+		{{- end }}
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+{{ end }}

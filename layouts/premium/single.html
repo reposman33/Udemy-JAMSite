@@ -1,0 +1,71 @@
+{{ define "main" }}
+
+<style media="screen">
+	#signin {
+		background: #DEDEDE;
+		border-radius: 5px;
+		padding: 1rem;
+	}
+
+	#signin input,
+	#signin button {
+		border: none;
+		border-radius: 5px;
+		display: block;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+		outline: none;
+		padding: 0.5rem 1rem;
+		width: 100%;
+	}
+
+	#signin button {
+		background-color: dodgerblue;
+		color: white;
+		cursor: pointer;
+	}
+</style>
+
+<main>
+	<div class="post">
+		{{ partial "single/post-info.html" . }}
+		{{ partial "single/title.html" . }}                                                                                                                                                                
+
+		{{ partial "single/header.html" . }}
+
+		<div class="premium-content">
+			<h2 style="text-align: center;">Sign in to view premium content</h2>
+			<form action="" id="signin">
+				<input type="text" name="username" placeholder="username" value=""></input>
+				<input type="password" name="password" placeholder="password" value=""></input>
+				<button type="submit">Sign In</button>
+			</form>
+		</div>
+
+		{{ partial "single/footer.html" . }}
+	</div>
+
+	<div class="pagination">
+		{{- if .PrevPage }}
+		<a href="{{ .PrevPage.RelPermalink }}" class="left arrow">&#8592;</a>
+		{{- end }}
+		{{- if .NextPage }}
+		<a href="{{ .NextPage.RelPermalink }}" class="right arrow">&#8594;</a>
+		{{- end }}
+
+		<a href="#" class="top">Top</a>
+	</div>
+</main>
+
+<script>
+	const form = document.querySelector("#signin");
+	const username = form.children['username'].value
+	const password = form.children.password.value
+
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+		form.innerHTML = "Authentication not yet implemented, please conme back later"
+	})
+
+</script>
+{{ end }}

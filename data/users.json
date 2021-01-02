@@ -1,0 +1,22 @@
+[
+	{
+		"name":"Marc",
+		"surname":"Bakker",
+		"skills": ["JavaScript", "React", "SQL"]
+	},
+	{
+		"name":"John",
+		"surname":"Smith",
+		"skills": ["HTML", "SCSS","Designing"]
+	},
+	{
+		"name":"Bob",
+		"surname":"Ross",
+		"skills": ["Doodling", "Mumbling", "Painting"]
+	},
+		{
+		"name":"Patrick",
+		"surname":"Swayze",
+		"skills": ["Acting", "Bragging", "Dancing"]
+	}
+]

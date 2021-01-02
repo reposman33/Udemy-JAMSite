@@ -1,0 +1,59 @@
+<style media="screen">
+	#contact {
+		background: #DEDEDE;
+		border-radius: 5px;
+		padding: 1rem;
+	}
+
+	#contact input, #contact textarea {
+		border: none;
+		border-radius: 5px;
+		display: block;
+		font-size: 1.25rem;
+		margin-bottom: 1rem;
+		outline: none;
+		padding: 0.5rem 1rem;
+		width: 100%;
+	}
+
+	#contact button {
+		background-color: dodgerblue;
+		border-radius: 15px;
+		color: white;
+		font-size: 1.25rem;
+		padding: 0.7rem;
+		width: 10rem;
+
+	}
+</style>
+
+<form id="contact">
+	<input type="email" name="email" value="" placeholder="email" required>
+	<textarea name="message" id="" cols="80" rows="8" placeholder="message"></textarea>
+	<button type="submit">Send message</button>
+</form>
+
+<script>
+	function handleContact(e) {
+		e.preventDefault();
+
+		const email = contactForm.elements[0];
+		const message = contactForm.elements[1];
+		// create POST body
+		const formData = {
+			[email.name]: email.value,
+			[message.name]: message.value,
+		}
+
+		fetch("http://localhost:2222",{
+			method:"POST",
+			mode: "no-cors",
+			body: JSON.stringify(formData)
+		}).then(() => {
+			contactForm.innerHTML = "<strong>Message sent</strong>"
+		})
+	}
+
+	const contactForm = document.querySelector("#contact");
+	contactForm.addEventListener("submit", handleContact, false);
+</script>

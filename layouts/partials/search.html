@@ -1,0 +1,88 @@
+<style media="screen">
+	.nav {
+		overflow: visible;
+		padding: 0.1rem;
+	}
+
+	#search {
+		float: right;
+		position: relative;
+		bottom: 0.2rem;
+		padding: 0.5rem;
+		width: 15rem;
+		border: 1px solid lightgray;
+	}
+
+	#search-results {
+		position: absolute;
+		background: white;
+		box-shadow: 1px 1px 5px rgba(0,0,0,0.35);
+		right: 0; 
+	}
+
+	#search-results a {
+		display: block;
+		border-bottom: 1px solid lightgray;
+		width: 12rem;
+		padding: 0.5rem;
+		font-weight: bold;
+	}
+
+	#search-results a:hover {
+		background-color: dodgerblue;
+		color: white;
+	}
+
+	#search-results.hide {
+		display: none;
+	}
+
+</style>
+<input type="text" id="search" placeholder="search">
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+
+<div id="search-results" class="hide"></div>
+
+<script>
+	// Show results only on focus
+	const search = document.querySelector("#search");
+	const searchResults = document.querySelector("#search-results");
+	let documents = [];
+
+	search.addEventListener("focus", e => searchResults.classList.remove("hide"))
+	search.addEventListener("blur", e => setTimeout(() => {
+	searchResults.classList.add("hide")
+	}, 300))
+
+	search.addEventListener("keyup", (e) => {
+		searchResults.innerHTML = "";
+		if(!e.target.value) {return}
+
+		let lunrResult = window.idx.search(e.target.value);
+
+		lunrResult.forEach(result => {
+			const link = document.createElement("a");
+			const ref = result.ref.split("||");
+			const text = ref[0]
+			const href = ref[1]
+			link.innerText = text;
+			link.href = href
+			searchResults.appendChild(link);
+		})
+	})
+
+	// Fetch search index
+	fetch("/index.json")
+	.then(res => res.json())
+	.then(searchIndex => {
+		window.idx = lunr(function () {
+
+			this.ref('meta')
+			this.field('title')
+			this.field('content')
+
+			searchIndex.forEach( page => this.add(page))
+		})
+	})
+</script>
