@@ -1,6 +1,5 @@
 baseURL = "https://relaxed-banach-328df0.netlify.app/"
 languageCode = "en-us"
-theme = "tale"
 title = "JAMSite"
 copyright =  "(c) 2020 Marc Bakker"
 disableKinds = ["section"]
