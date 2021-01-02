@@ -29,16 +29,16 @@ jobs:
       uses: peaceiris/actions-hugo@v2.4.13
       with:
         extended: true
-
-        # build site
-      - name: Build HUGO site
-        run: hugo
-        
-        # Commit site to new branch
-      - name: Deploy to GH Pages
-        uses: crazy-max/ghaction-github-pages@v2.2.0
-        with:
+      
+      # build site
+    - name: Build HUGO site
+      run: hugo
+      
+      # Commit site to new branch
+    - name: Deploy to GH Pages
+      uses: crazy-max/ghaction-github-pages@v2.2.0
+      with:
           target_branch: gh-pages
           build_dir: public
-        env:
+      env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
