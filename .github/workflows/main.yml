@@ -23,22 +23,22 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-        # set up HUGO environment
-          - name: Hugo setup
-          uses: peaceiris/actions-hugo@v2.4.13
-          with:
-            extended: true
+    - uses: actions/checkout@v2
+    # set up HUGO environment
+    - name: Hugo setup
+      uses: peaceiris/actions-hugo@v2.4.13
+      with:
+        extended: true
 
-          # build site
-          - name: Build HUGO site
-            run: hugo
-            
-            # Commit site to new branch
-             - name: Deploy to GH Pages
-               uses: crazy-max/ghaction-github-pages@v2.2.0
-               with:
-                target_branch: gh-pages
-                build_dir: public
-               env:
-                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # build site
+      - name: Build HUGO site
+        run: hugo
+        
+        # Commit site to new branch
+      - name: Deploy to GH Pages
+        uses: crazy-max/ghaction-github-pages@v2.2.0
+        with:
+          target_branch: gh-pages
+          build_dir: public
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
