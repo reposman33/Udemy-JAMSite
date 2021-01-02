@@ -26,14 +26,12 @@ jobs:
       - uses: actions/checkout@v2
         # set up HUGO environment
           - name: Hugo setup
-        # You may pin to the exact commit or the version.
-        # uses: peaceiris/actions-hugo@2e89aa66d0093e4cd14751b3028fc1a179452c2e
-        uses: peaceiris/actions-hugo@v2.4.13
-        with:
-          extended: true
-          
+          uses: peaceiris/actions-hugo@v2.4.13
+          with:
+            extended: true
+
           # build site
-          - name: build HUGO site
+          - name: Build HUGO site
             run: hugo
             
             # Commit site to new branch
@@ -43,4 +41,4 @@ jobs:
                 target_branch: gh-pages
                 build_dir: public
                env:
-                GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
