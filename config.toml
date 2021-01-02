@@ -4,7 +4,8 @@ title = "JAMsite"
 theme = "tale"
 copyright =  "(c) 2020 Marc Bakker"
 disableKinds = ["section"]
+publishDir = "docs"
 [params]
-	customCSS = ["assets/css/custom_styles.css"]
+	customCSS = ["assets/sass/custom_styles.scss"]
 [outputs]
 	home = ["HTML", "JSON"]
