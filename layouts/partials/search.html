@@ -73,7 +73,7 @@
 	})
 
 	// Fetch search index
-	fetch("/index.json")
+	fetch({{.Site.BaseURL}} + "/index.json")
 	.then(res => res.json())
 	.then(searchIndex => {
 		window.idx = lunr(function () {
