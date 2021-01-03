@@ -1,0 +1,46 @@
+backend:
+    name: github
+    repo: reposman33/Udemy-JAMSite
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+publish_mode: editorial_workflow
+
+collections:
+    - name: "page"
+      label: "Page"
+      folder: "content/"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Author", name: "author", widget: "select", options: ["Marc Bakker", "Jan Doedel"] }
+          - {
+                label: "Date",
+                name: "date",
+                widget: "datetime",
+                default:"",
+                date_format:"YYYY-MM-DD",
+                time_format: "HH:MM",
+                format:"LLL",
+                picker_uts: false,
+            }
+          - { label: "Content", name: "body", widget: "markdown" }
+    - name: "premium"
+      label: "Premium page"
+      folder: "content/premium"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - {
+                label: "Activationtime",
+                name: "activationtime",
+                widget: "datetime",
+                default:"",
+                date_format:"YYYY-MM-DD",
+                time_format: "HH:MM",
+                format:"LLL",
+                picker_uts: false,
+            }
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Author", name: "author", widget: "select", options: ["Marc Bakker", "Jan Doedel"] }
+          - { label: "Content", name: "body", widget: "markdown" }
