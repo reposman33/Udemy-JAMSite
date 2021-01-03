@@ -32,8 +32,8 @@ collections:
       slug: "{{slug}}"
       fields:
           - {
-                label: "Activationtime",
-                name: "activationtime",
+                label: "Date",
+                name: "date",
                 widget: "datetime",
                 default:"",
                 date_format:"YYYY-MM-DD",
